@@ -3282,12 +3282,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6966290458217300510, guid: f962240a7f3b248b2ab03912513341c0, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 113894364}
+    - target: {fileID: 6966290458217300510, guid: f962240a7f3b248b2ab03912513341c0, type: 3}
       propertyPath: rigidbody
       value: 
       objectReference: {fileID: 113894360}
     - target: {fileID: 6966290458217300510, guid: f962240a7f3b248b2ab03912513341c0, type: 3}
       propertyPath: movementSpeed
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7348548333041790224, guid: f962240a7f3b248b2ab03912513341c0, type: 3}
       propertyPath: m_Name
