@@ -8,7 +8,9 @@ public class PressurePad : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private bool isPlayerInRange = false;
     [SerializeField] private KeyCode key = KeyCode.E;
-    [SerializeField] private string sceneNameToLoad = "";
+    [SerializeField] private string sceneToLoad = "";
+    [SerializeField] private string playerSpawnInNewScene = "";
+
     private void Start()
     {
         arrow.SetActive(false);
@@ -19,7 +21,7 @@ public class PressurePad : MonoBehaviour
         if (Input.GetKeyDown(key) && isPlayerInRange)
         {
             print("Loading new scene...");
-            SceneManager.LoadScene(sceneNameToLoad);
+            GameEvents.levelExit.Invoke(sceneToLoad, playerSpawnInNewScene);
         }
     }
 

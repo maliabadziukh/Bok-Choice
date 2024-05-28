@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2cfe99e6e62450c9bfe9540d9bf36c, type: 3}
+  m_Name: PlayerManager
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1310826420443004258, guid: 0b6a56125df8f7d47afa0fdd31c34774, type: 3}
+  startingState: {fileID: 11400000, guid: 44c8b5160a7754e0f95924a757752ad5, type: 2}
+  spawnTag: Respawn
