@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
-        
+
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -32,6 +32,6 @@ public class PlayerController : MonoBehaviour
         Vector3 movementVector = new Vector3(movement.x, movement.y, 0);
         movementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 
-        rigidbody.MovePosition(rigidbody.transform.position + movementVector);
+        transform.position += movementSpeed * Time.deltaTime * movementVector;
     }
 }
