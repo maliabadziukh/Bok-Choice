@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     private Transform playerTransform;
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player(Clone)");
         playerTransform = player.transform;
         playerController = player.GetComponent<PlayerController>();
     }
