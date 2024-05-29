@@ -23,21 +23,10 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (movement.x > 0)
+        if (movement.sqrMagnitude > 0.01)
         {
-            animator.SetInteger("Direction", 3);
-        }
-        else if (movement.x < 0)
-        {
-            animator.SetInteger("Direction", 2);
-        }
-        if (movement.y > 0)
-        {
-            animator.SetInteger("Direction", 1);
-        }
-        else if (movement.y < 0)
-        {
-            animator.SetInteger("Direction", 0);
+            animator.SetFloat("Hor", movement.x);
+            animator.SetFloat("Ver", movement.y);
         }
     }
 
