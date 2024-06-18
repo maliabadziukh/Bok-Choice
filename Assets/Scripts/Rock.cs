@@ -7,14 +7,14 @@ public class Rock : MonoBehaviour
 {
     [SerializeField] private bool isPickedUp = false;
     [SerializeField] private bool isPlayerInRange = false;
-    [SerializeField] private GameObject player;
+    public GameObject player;
     [SerializeField] private GameObject highlight;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float throwForce = 1;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         highlight = transform.GetChild(0).gameObject;
         highlight.SetActive(false);
     }
@@ -69,15 +69,18 @@ public class Rock : MonoBehaviour
     public void PickUp()
     {
         isPickedUp = true;
+        print("Picked up " + isPickedUp);
         rb.isKinematic = true;
         GetComponent<Collider2D>().enabled = false;
+        highlight.SetActive(false);
     }
     public void Throw()
     {
+        print("YEET ");
         isPickedUp = false;
         rb.isKinematic = false;
         transform.parent = null;
-        rb.AddForce(new Vector2(1, 1) * throwForce, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(player.GetComponent<PlayerController>().playerDirX, player.GetComponent<PlayerController>().playerDirY) * throwForce, ForceMode2D.Impulse);
         GetComponent<Collider2D>().enabled = true;
     }
 }
