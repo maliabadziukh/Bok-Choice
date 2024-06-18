@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4440092265918672105}
   - component: {fileID: 1345921533134610469}
   - component: {fileID: 1214396028339027414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -103,6 +103,8 @@ MonoBehaviour:
   movementSpeed: 15
   rigidbody: {fileID: 4440092265918672105}
   animator: {fileID: 1214396028339027414}
+  playerDirX: 0
+  playerDirY: 0
 --- !u!50 &4440092265918672105
 Rigidbody2D:
   serializedVersion: 4
@@ -129,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &1345921533134610469
 BoxCollider2D:
   m_ObjectHideFlags: 0

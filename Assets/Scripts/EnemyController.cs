@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
@@ -8,19 +9,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float health = 100;
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float damage = 10;
-    [SerializeField] private GameObject player;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private Vector3 playerPosition;
+    public GameObject player = null;
+    public PlayerController playerController;
+    public Vector3 playerPosition;
+    public Transform playerTransform = null;
     [SerializeField] private float attackRange = 1;
     [SerializeField] private float distanceToPlayer;
     [SerializeField] private bool isAttacking;
+    private Collider2D col;
 
-    private Transform playerTransform;
     void Start()
     {
-        player = GameObject.Find("Player(Clone)");
-        playerTransform = player.transform;
-        playerController = player.GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -51,5 +51,13 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         print("Attacking player!!!! >:(");
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

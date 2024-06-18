@@ -1,8 +1,10 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float health;
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
@@ -10,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float playerDirY;
     private Vector2 movement;
     private GameObject rock;
+    private List<GameObject> enemies = new List<GameObject>();
 
     void Start()
     {
@@ -17,6 +20,24 @@ public class PlayerController : MonoBehaviour
         animator = this.GetComponent<Animator>();
         rock = GameObject.Find("Rock");
         rock.GetComponent<Rock>().player = this.gameObject;
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemies.Add(enemy);
+            print("Enemy added");
+        }
+        foreach (GameObject enemy in enemies)
+        {
+            SetupEnemyTargeting(enemy);
+            print("Enemy target set");
+        }
+    }
+
+    void SetupEnemyTargeting(GameObject i)
+    {
+        EnemyController enemyScript = i.GetComponent<EnemyController>();
+        enemyScript.player = this.gameObject;
+        enemyScript.playerTransform = enemyScript.player.transform;
+        enemyScript.playerController = enemyScript.player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

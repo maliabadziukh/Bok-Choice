@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4638186246906177800}
   - component: {fileID: 5024277438007934883}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: top
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 4193411624792905162}
   - component: {fileID: 3473121733286150585}
   - component: {fileID: 1395214412015641529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bottom
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,9 +223,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167853181907123965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
