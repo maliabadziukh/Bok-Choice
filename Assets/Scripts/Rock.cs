@@ -9,6 +9,7 @@ public class Rock : MonoBehaviour
 {
     [SerializeField] private bool isPickedUp = false;
     [SerializeField] private bool isPlayerInRange = false;
+    [SerializeField] private float bounceDrag;
     public GameObject player = null;
     [SerializeField] private GameObject highlight;
     [SerializeField] private Rigidbody2D rb;
@@ -47,9 +48,9 @@ public class Rock : MonoBehaviour
         if ((colObject.CompareTag("Obstacle") || colObject.CompareTag("Enemy")) && inFlight)
         {
             print("rock hits obstacle");
-            rb.velocity = Vector3.zero;
             inFlight = false;
             GetComponent<Collider2D>().isTrigger = true;
+            BounceBack();
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -80,9 +81,15 @@ public class Rock : MonoBehaviour
         }
     }
 
+    void BounceBack()
+    {
+        rb.velocity = -(rb.velocity);
+        rb.drag = bounceDrag;
+    }
 
     public void PickUp()
     {
+        rb.drag = 0;
         isPickedUp = true;
         print("Picked up " + isPickedUp);
         rb.isKinematic = true;

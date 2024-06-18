@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     public float playerDirY;
     private Vector2 movement;
     private GameObject rock;
+    public HealthManager healthScript;
     private List<GameObject> enemies = new List<GameObject>();
 
     void Start()
     {
+        healthScript = GameObject.Find("HealthManager").GetComponent<HealthManager>();
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         rock = GameObject.Find("Rock");
@@ -67,5 +69,13 @@ public class PlayerController : MonoBehaviour
         movementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 
         transform.position += movementSpeed * Time.deltaTime * movementVector;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            healthScript.TakeDamage(col.gameObject.GetComponent<EnemyController>().damage);
+        }
     }
 }

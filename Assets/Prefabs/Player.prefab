@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65edf190136894681b6aa69ffa1e1fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   movementSpeed: 15
   rigidbody: {fileID: 4440092265918672105}
   animator: {fileID: 1214396028339027414}
@@ -131,7 +132,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &1345921533134610469
 BoxCollider2D:
   m_ObjectHideFlags: 0

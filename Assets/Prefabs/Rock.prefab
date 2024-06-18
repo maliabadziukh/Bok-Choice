@@ -164,11 +164,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPickedUp: 0
   isPlayerInRange: 0
+  bounceDrag: 4
   player: {fileID: 0}
   highlight: {fileID: 0}
   rb: {fileID: 0}
-  throwForce: 1
+  throwForce: 2
   inFlight: 0
+  aimDistanceMultiplier: 0.5
 --- !u!1 &6096478425493535449
 GameObject:
   m_ObjectHideFlags: 0

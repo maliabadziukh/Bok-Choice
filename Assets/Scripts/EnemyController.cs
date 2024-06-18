@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float health = 100;
     [SerializeField] private float movementSpeed = 1;
-    [SerializeField] private float damage = 10;
+    public float damage = 10;
     public GameObject player = null;
     public PlayerController playerController;
     public Vector3 playerPosition;
@@ -18,12 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool isAttacking;
     private Collider2D col;
 
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
