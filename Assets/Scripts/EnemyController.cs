@@ -16,14 +16,25 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float distanceToPlayer;
     [SerializeField] private bool isAttacking;
     private Collider2D col;
+    public Vector3 flipLeft;
+    private float oldXpos;
 
-
+    private void Start()
+    {
+        oldXpos = transform.position.x;
+        flipLeft = new Vector3(-1, 1, 1);
+    }
     void Update()
     {
+        if (player.transform.position.x < transform.position.x)
+        {
+            transform.localScale = flipLeft;
+        }else transform.localScale = Vector3.one;
 
         playerPosition = playerTransform.position;
         MoveToTarget(playerPosition);
     }
+
 
     void MoveToTarget(Vector3 target)
     {

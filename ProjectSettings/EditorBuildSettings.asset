@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: b5d85aab671692b4c9cbc1d91094c7f1
+    path: Assets/Scenes/New/Bottom.unity
+    guid: 5069ce759b777fb4ab63a97646ce70aa
   - enabled: 1
-    path: Assets/Scenes/StoneLevel.unity
-    guid: cd07ac3bd4644ee43ab5469c29391134
+    path: Assets/Scenes/New/Left.unity
+    guid: ed67d2d517f99ae44bdee2f18cf91940
   - enabled: 1
-    path: Assets/Scenes/EnemyLevel.unity
-    guid: 271f0f9990a047040af8beaba4bd03f5
-  - enabled: 1
-    path: Assets/Scenes/RewardRoom.unity
-    guid: 61c83c808b29b08408ae915f5fe6601e
+    path: Assets/Scenes/New/Right.unity
+    guid: a14edcf35929ccc498c7c37bcbbde185
   m_configObjects: {}

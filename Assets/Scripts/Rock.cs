@@ -11,11 +11,14 @@ public class Rock : MonoBehaviour
     [SerializeField] private bool isPlayerInRange = false;
     [SerializeField] private float bounceDrag;
     public GameObject player = null;
+    private bool playerFound = false;
     [SerializeField] private GameObject highlight;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float throwForce = 1;
     [SerializeField] private bool inFlight;
     [SerializeField] private float aimDistanceMultiplier;
+    private bool inVoid = false;
+    [SerializeField] private Transform resetPoint;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,18 +51,33 @@ public class Rock : MonoBehaviour
         if ((colObject.CompareTag("Obstacle") || colObject.CompareTag("Enemy")) && inFlight)
         {
             print("rock hits obstacle");
-            inFlight = false;
-            GetComponent<Collider2D>().isTrigger = true;
-            BounceBack();
+            RockLanded(colObject);
+        }
+        if (colObject.CompareTag("Trigger"))
+        {
+            print("Button triggered");
+            colObject.GetComponent<OpenDoor>().OpenSesame();
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.CompareTag("Player")&& !playerFound)
+        {
+            player = other.gameObject;
+        }
+
         if (other.gameObject.CompareTag("Player") && !isPickedUp && !inFlight)
         {
             highlight.SetActive(true);
             isPlayerInRange = true;
         }
+        if ((other.gameObject.layer == 7))
+        {
+            print("rock in void");
+            inVoid = true;
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -68,6 +86,12 @@ public class Rock : MonoBehaviour
         {
             PickUp();
         }
+        if ((other.gameObject.layer == 7))
+        {
+            print("rock in void");
+            inVoid = true;
+        }
+
     }
 
 
@@ -79,6 +103,22 @@ public class Rock : MonoBehaviour
             isPlayerInRange = false;
 
         }
+        if ((other.gameObject.layer == 7))
+        {
+            print("rock out void");
+            inVoid = false;
+        }
+    }
+
+    void RockLanded(GameObject colObject)
+    {
+        inFlight = false;
+        GetComponent<Collider2D>().isTrigger = true;
+        BounceBack();
+        if (inVoid) {
+            rb.velocity = Vector3.zero;
+            transform.position = resetPoint.position;
+        }
     }
 
     void BounceBack()
@@ -87,7 +127,7 @@ public class Rock : MonoBehaviour
         rb.drag = bounceDrag;
     }
 
-    public void PickUp()
+    private void PickUp()
     {
         rb.drag = 0;
         isPickedUp = true;

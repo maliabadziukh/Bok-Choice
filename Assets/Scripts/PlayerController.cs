@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float health;
+    public Camera cam;
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
@@ -17,11 +18,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+        cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
+        cam.transform.parent = transform;
         healthScript = GameObject.Find("HealthManager").GetComponent<HealthManager>();
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        rock = GameObject.Find("Rock");
-        rock.GetComponent<Rock>().player = this.gameObject;
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemies.Add(enemy);
@@ -76,6 +78,24 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             healthScript.TakeDamage(col.gameObject.GetComponent<EnemyController>().damage);
+        }
+        if (col.gameObject.CompareTag("Trigger")){
+            print("trigger collided");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Consumable"))
+        {
+            if (healthScript.healthAmount < 100) 
+            { 
+                healthScript.GetHeal(20);
+                Destroy(collision.gameObject);
+            }
+        }
+        if (collision.CompareTag("Trigger"))
+        {
+            collision.GetComponent<OpenDoor>().OpenSesame();
         }
     }
 }

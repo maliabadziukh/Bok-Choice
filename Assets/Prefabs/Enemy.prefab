@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3420696333485576421}
   - component: {fileID: 1368514915982190340}
   - component: {fileID: 4911537831754862929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,15 +100,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a053c985b5ea46c9a4b1214395de065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  movementSpeed: 1
+  movementSpeed: 2
   damage: 10
   player: {fileID: 0}
   playerController: {fileID: 0}
   playerPosition: {x: 0, y: 0, z: 0}
+  playerTransform: {fileID: 0}
   attackRange: 1
   distanceToPlayer: 0
   isAttacking: 0
+  flipLeft: {x: 0, y: 0, z: 0}
 --- !u!95 &3420696333485576421
 Animator:
   serializedVersion: 5

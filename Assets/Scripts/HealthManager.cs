@@ -20,7 +20,8 @@ public class HealthManager : MonoBehaviour
     {
         if (healthAmount <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel);
+            // load game over screen
+            Time.timeScale = 0;
         }
 
         if (Input.GetKeyDown("h"))

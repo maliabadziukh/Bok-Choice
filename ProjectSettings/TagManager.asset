@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Projectile
   - Enemy
+  - Trigger
+  - Consumable
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -14,11 +17,11 @@ TagManager:
   - Level Objs
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Void
   - Player
   - Projectile
-  - 
+  - Button
   - 
   - 
   - 
