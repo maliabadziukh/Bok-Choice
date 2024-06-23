@@ -7,6 +7,11 @@ public class MenuManager : MonoBehaviour
 {
     public void LoadScene(int i)
     {
+        if(i == 1)
+        {
+            GameObject manager = GameObject.Find("GameManager");
+            Destroy(manager);
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene(i);
     }

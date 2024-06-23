@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private GameState startingState;
-    public GameState GameState { get; private set; }
+    public GameState gameState { get; private set; }
     public LevelManager levelManager;
     public PlayerManager playerManager;
     public List<bool> doorSaves = new List<bool>();
@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
                 doorSaves.Add(false);
             }
         }
-        GameState = Instantiate(startingState);
-        levelManager.GameState = GameState;
-        playerManager.GameState = GameState;
+        gameState = Instantiate(startingState);
+        levelManager.GameState = gameState;
+        playerManager.GameState = gameState;
         print("Game manager awake.");
     }
 
@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(6,LoadSceneMode.Additive);
         }
 
+    }
+
+    public void Respawn()
+    {
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
 }

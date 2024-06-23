@@ -10,13 +10,19 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     public float healthAmount = 100f;
     public AudioClip damageSound;
+    public GameManager manager;
+
+    private void Awake()
+    {
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (healthAmount <= 0)
         {
-            SceneManager.LoadScene(0);
+            manager.Respawn();
         }
 
         if (Input.GetKeyDown("h"))
