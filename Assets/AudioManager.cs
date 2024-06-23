@@ -15,6 +15,6 @@ public class AudioManager : MonoBehaviour
         audioSrc.clip = clip;
         audioSrc.Play();
         print("playing sound");
-        yield return null;
+        yield return new WaitForSeconds(5);
     }
 }

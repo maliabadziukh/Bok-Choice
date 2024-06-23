@@ -101,6 +101,7 @@ MonoBehaviour:
   triggered: {fileID: 929195593, guid: c7b59000839ddfb48aa7c2a871b94ea1, type: 3}
   door: {fileID: 0}
   pressurePad: {fileID: 0}
+  clip: {fileID: 8300000, guid: e38cd80405e795d408049706cf27808d, type: 3}
 --- !u!61 &1552036277159166745
 BoxCollider2D:
   m_ObjectHideFlags: 0

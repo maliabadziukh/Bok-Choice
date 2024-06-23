@@ -19,6 +19,8 @@ public class Rock : MonoBehaviour
     [SerializeField] private float aimDistanceMultiplier;
     private bool inVoid = false;
     [SerializeField] private Transform resetPoint;
+    public AudioClip punchClip;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,6 +54,8 @@ public class Rock : MonoBehaviour
         {
             print("rock hits obstacle");
             RockLanded(colObject);
+            if(colObject.CompareTag("Enemy"))
+                AudioSource.PlayClipAtPoint(punchClip, transform.position, 1f);
         }
         if (colObject.CompareTag("Trigger"))
         {

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 32675068617292295}
   healthAmount: 100
+  damageSound: {fileID: 8300000, guid: 5cf2612b0120f6e4d811acc62a9c8237, type: 3}
 --- !u!1 &1610762561938270494
 GameObject:
   m_ObjectHideFlags: 0

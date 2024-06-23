@@ -5,11 +5,10 @@ using UnityEngine;
 public class CoinScript : MonoBehaviour
 {
     public CountMulla managerScript;
-    public AudioManager audioScript;
     public AudioClip coinSound;
     private void Start()
     {
-        coinSound = GetComponent<AudioClip>();
+        
         managerScript = GameObject.Find("MullaManager").GetComponent<CountMulla>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -17,7 +16,7 @@ public class CoinScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             managerScript.mulla += 1;
-            StartCoroutine(audioScript.PlaySound(coinSound));
+            AudioSource.PlayClipAtPoint(coinSound, transform.position,1f);
             Destroy(gameObject);
         }
 

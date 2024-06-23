@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
 {
     public Image healthBar;
     public float healthAmount = 100f;
+    public AudioClip damageSound;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        AudioSource.PlayClipAtPoint(damageSound, transform.position, 1f);
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / 100f;
     }
