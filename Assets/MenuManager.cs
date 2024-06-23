@@ -16,8 +16,18 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(i);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Resume();
+        }
+    }
+
     public void Resume()
     {
+        GameManager manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        manager.isPaused = false;
         Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(6));
     }

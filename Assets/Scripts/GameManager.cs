@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public List<bool> doorSaves = new List<bool>();
     public int mulla = 0;
+    public bool isPaused = false;
 
     void Awake()
     {
@@ -43,9 +44,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+    {       
+        if (Input.GetKeyDown(KeyCode.Escape)&& !isPaused && (SceneManager.GetActiveScene().buildIndex!=0))
         {
+            isPaused = true;
             Time.timeScale = 0;
             SceneManager.LoadScene(6,LoadSceneMode.Additive);
         }
