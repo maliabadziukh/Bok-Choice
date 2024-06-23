@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 4754325206976993428}
   - component: {fileID: 2722600744450687093}
   - component: {fileID: 2977741733085537746}
+  - component: {fileID: 3860768062431791361}
   m_Layer: 5
   m_Name: Coins display
   m_TagString: Untagged
@@ -693,3 +694,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3860768062431791361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879208985609853764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be2da3306e57e147a90f61c10e6ef61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  coinDisplay: {fileID: 0}

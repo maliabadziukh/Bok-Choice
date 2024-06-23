@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -10,19 +11,12 @@ public class HealthManager : MonoBehaviour
     public float healthAmount = 100f;
     public AudioClip damageSound;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (healthAmount <= 0)
         {
-            // load game over screen
-            Time.timeScale = 0;
+            SceneManager.LoadScene(0);
         }
 
         if (Input.GetKeyDown("h"))
@@ -33,7 +27,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        AudioSource.PlayClipAtPoint(damageSound, transform.position, 1f);
+        SoundFXManager.instance.PlaySoundFXClip(damageSound,1f);
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / 100f;
     }

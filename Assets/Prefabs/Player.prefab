@@ -101,12 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  cam: {fileID: 0}
   movementSpeed: 15
   rigidbody: {fileID: 4440092265918672105}
   animator: {fileID: 1214396028339027414}
   playerDirX: 0
   playerDirY: 0
   healthScript: {fileID: 0}
+  heal: {fileID: 8300000, guid: bddf4ce92ecf45f48a80d4b96394f4d4, type: 3}
+  gameManager: {fileID: 0}
 --- !u!50 &4440092265918672105
 Rigidbody2D:
   serializedVersion: 4

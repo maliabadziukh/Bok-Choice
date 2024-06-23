@@ -5,19 +5,17 @@ using TMPro;
 
 public class CountMulla : MonoBehaviour
 {
-    public int mulla = 0;
+    public GameManager manager;
     public TextMeshProUGUI coinDisplay;
 
     public void Start()
     {
-        coinDisplay = GameObject.Find("Coins display").GetComponent<TextMeshProUGUI>();
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        coinDisplay = GetComponent<TextMeshProUGUI>();
     }
 
     private void FixedUpdate()
     {
-        PlayerPrefs.SetInt("Coins", mulla);
-        coinDisplay.text = PlayerPrefs.GetInt("Coins").ToString();
-        if (Input.GetKeyDown("r"))
-            PlayerPrefs.SetInt("Coins", 0);
+        coinDisplay.text = manager.mulla.ToString();
     }
 }

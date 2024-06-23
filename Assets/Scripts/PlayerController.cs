@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float health;
     public Camera cam;
     [SerializeField] private float movementSpeed = 1;
-    [SerializeField] private new Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
     public float playerDirX;
     public float playerDirY;
@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour
     private GameObject rock;
     public HealthManager healthScript;
     private List<GameObject> enemies = new List<GameObject>();
+    public AudioClip heal;
+    public GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         cam = Camera.main;
         cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
         cam.transform.parent = transform;
@@ -89,13 +92,15 @@ public class PlayerController : MonoBehaviour
         {
             if (healthScript.healthAmount < 100) 
             { 
-                healthScript.GetHeal(20);
+                healthScript.GetHeal(30);
+                SoundFXManager.instance.PlaySoundFXClip(heal,1f);
                 Destroy(collision.gameObject);
             }
         }
         if (collision.CompareTag("Trigger"))
         {
-            collision.GetComponent<OpenDoor>().OpenSesame();
+            collision.GetComponent<OpenDoor>().OpenSesame(true);
+            gameManager.ToggleDoorSave(1);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rock : MonoBehaviour
 {
@@ -20,9 +21,13 @@ public class Rock : MonoBehaviour
     private bool inVoid = false;
     [SerializeField] private Transform resetPoint;
     public AudioClip punchClip;
+    public AudioClip pickupClip;
+    public AudioClip throwClip;
+    public GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         highlight = transform.GetChild(0).gameObject;
         highlight.SetActive(false);
@@ -54,13 +59,16 @@ public class Rock : MonoBehaviour
         {
             print("rock hits obstacle");
             RockLanded(colObject);
-            if(colObject.CompareTag("Enemy"))
-                AudioSource.PlayClipAtPoint(punchClip, transform.position, 1f);
+            if (colObject.CompareTag("Enemy"))
+                SoundFXManager.instance.PlaySoundFXClip(punchClip, 1f);
         }
         if (colObject.CompareTag("Trigger"))
         {
             print("Button triggered");
-            colObject.GetComponent<OpenDoor>().OpenSesame();
+            colObject.GetComponent<OpenDoor>().OpenSesame(true);
+            if(colObject.GetComponent<OpenDoor>().isLeftDoor)
+                gameManager.ToggleDoorSave(0);
+            else gameManager.ToggleDoorSave(2);
             Destroy(gameObject);
         }
     }
@@ -133,6 +141,7 @@ public class Rock : MonoBehaviour
 
     private void PickUp()
     {
+        SoundFXManager.instance.PlaySoundFXClip(pickupClip, 1f);
         rb.drag = 0;
         isPickedUp = true;
         print("Picked up " + isPickedUp);
@@ -142,6 +151,7 @@ public class Rock : MonoBehaviour
     }
     public void Throw()
     {
+        SoundFXManager.instance.PlaySoundFXClip(throwClip, 1f);
         print("YEET ");
         isPickedUp = false;
         rb.isKinematic = false;
